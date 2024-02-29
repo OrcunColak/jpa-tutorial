@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  hazelcast:
+    image: hazelcast/hazelcast
+    environment:
+      - HAZELCAST_CONFIG=hz.yml
+    volumes:
+      - ./hazelcast.yml:/opt/hazelcast/hz.yml
+    ports:
+      - '5701:5701'
+  management-center:
+    # http://localhost:8082
+    image: hazelcast/management-center
+    hostname: management-center
+    container_name: management-center
+    ports:
+      - "8082:8080"
+    environment:
+      - MC_DEFAULT_CLUSTER=dev
+      - MC_DEFAULT_CLUSTER_MEMBERS=hazelcast
+      - MC_ALLOW_MULTIPLE_LOGIN=true
+      - MC_ADMIN_USER=admin
+      - MC_ADMIN_PASSWORD=hazelcast12

@@ -7,14 +7,17 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Employee {
+public class Employee2 {
     @Id
     @GeneratedValue
     private Long id;

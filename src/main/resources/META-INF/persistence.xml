@@ -9,7 +9,7 @@
 
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 
-        <!-- <class>com.colak.jpa.Employee</class> -->
+        <!-- <class>com.colak.jpa.Employee2</class> -->
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
@@ -18,9 +18,18 @@
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
 
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="true" />
+
             <property name="hibernate.cache.use_second_level_cache" value="true"/>
             <property name="hibernate.cache.region.factory_class"
                       value="com.hazelcast.hibernate.HazelcastCacheRegionFactory"/>
+
+
+            <property name="hibernate.cache.hazelcast.use_native_client" value="true"/>
+            <property name="hibernate.cache.hazelcast.native_client_instance_name" value="hz1"/>
+
         </properties>
 
 
