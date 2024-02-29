@@ -22,6 +22,29 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.generate_statistics" value="true" />
 
+        </properties>
+
+
+    </persistence-unit>
+
+    <persistence-unit name="l2">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
+        <!-- <class>com.colak.jpa.Employee2</class> -->
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="true" />
+
             <property name="hibernate.cache.use_second_level_cache" value="true"/>
             <property name="hibernate.cache.region.factory_class"
                       value="com.hazelcast.hibernate.HazelcastCacheRegionFactory"/>

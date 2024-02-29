@@ -11,9 +11,8 @@ import jakarta.persistence.Persistence;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Main {
+public class L2CacheTest {
     public static void main(String[] args) {
-
         HazelcastInstance hazelcastInstance = getHazelcastInstance();
         String name = hazelcastInstance.getName();
         log.info("Hazelcast Client Name : {}", name);
@@ -24,7 +23,7 @@ public class Main {
         employee2.setFirstName("John");
         employee2.setLastName("Doe");
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("l2");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
