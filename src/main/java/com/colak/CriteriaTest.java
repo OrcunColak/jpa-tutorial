@@ -1,6 +1,6 @@
 package com.colak;
 
-import com.colak.jpa.Employee2;
+import com.colak.jpa.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -20,32 +20,32 @@ import java.util.List;
 public class CriteriaTest {
 
     public static void main(String[] args) {
-        Employee2 employee2 = new Employee2();
-        employee2.setFirstName("John");
-        employee2.setLastName("Doe");
+        User user = new User();
+        user.setFirstName("John");
+        user.setLastName("Doe");
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
-        entityManager.persist(employee2);
-        log.info("Employee id : {}", employee2.getId());
+        entityManager.persist(user);
+        log.info("User id : {}", user.getId());
 
         entityManager.flush();
         entityManager.getTransaction().commit();
 
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Employee2> criteriaQuery = criteriaBuilder.createQuery(Employee2.class);
-        Root<Employee2> root = criteriaQuery.from(Employee2.class);
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
 
         Predicate equalPredicate = criteriaBuilder.equal(root.get("firstName"), "John");
         criteriaQuery.select(root).where(equalPredicate);
 
-        TypedQuery<Employee2> typedQuery = entityManager.createQuery(criteriaQuery);
+        TypedQuery<User> typedQuery = entityManager.createQuery(criteriaQuery);
 
-        List<Employee2> employees = typedQuery.getResultList();
-        log.info("Employees : {}", employees);
+        List<User> userList = typedQuery.getResultList();
+        log.info("UserList : {}", userList);
 
         entityManager.close();
         entityManagerFactory.close();

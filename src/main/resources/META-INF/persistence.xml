@@ -7,9 +7,7 @@
     <persistence-unit name="default">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
-
-        <!-- <class>com.colak.jpa.Employee2</class> -->
+        <class>com.colak.jpa.User</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
